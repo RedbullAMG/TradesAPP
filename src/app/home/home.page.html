@@ -1,20 +1,62 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
     <ion-title>
-      Blank
+     Tradel
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-item (click)="salir()" routerDirection="root" lines="none" detail="false">
+        <ion-icon  [name]="'exit-outline'"></ion-icon>
+        <ion-label>Salir</ion-label>
+      </ion-item>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Bienvenido</ion-card-title>
+    </ion-card-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Nombre de Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="userData.username" disabled></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre</ion-label>
+        <ion-input type="text" [(ngModel)]="userData.nombre"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Apellido</ion-label>
+        <ion-input type="text" [(ngModel)]="userData.apellido"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Nivel de Educación</ion-label>
+        <ion-select [(ngModel)]="userData.nivelEducacion" label="Seleccionar">
+          <ion-select-option value="Basica">Basica</ion-select-option>
+          <ion-select-option value="Media">Media</ion-select-option>
+          <ion-select-option value="Universitaria">Universitaria</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de Nacimiento</ion-label>
+        <div class="custom-date-input">
+          <input
+            type="text"
+            [(ngModel)]="userData.fechaNacimiento"
+            readonly
+            (click)="abrirCalendario()"
+          />
+          <ion-icon name="calendar" (click)="abrirCalendario()"></ion-icon>
+        </div>
+      </ion-item>
+      
+      
+
+  <ion-button expand="full" (click)="limpiarCampos()">Limpiar</ion-button>
+  <ion-button expand="full" (click)="mostrarInformacion()">Mostrar</ion-button>
