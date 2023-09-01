@@ -20,10 +20,14 @@ export class RegistroPage implements OnInit {
     this.formularioRegistro = this.fb.group({
 
       'usuario': new FormControl("", Validators.required),
+      'rut': new FormControl("", Validators.required),
+      'email': new FormControl("", [Validators.required, Validators.email]),
       'password': new FormControl("", Validators.required),
       'confirmacionPassword': new FormControl ("", Validators.required)
 
     });
+
+    
   }
 
   ngOnInit() {
@@ -37,7 +41,7 @@ export class RegistroPage implements OnInit {
       const alert = await this.alertController.create({
         header: 'Aviso!',
         subHeader: 'Presta Atención',
-        message: 'Tienes que llenar todos los campos',
+        message: 'Tienes que llenar todos los campos y proporcionar un correo válido',
         buttons: ['Aceptar'],
       });
 
@@ -57,7 +61,7 @@ export class RegistroPage implements OnInit {
     
 
     var nom = {
-      usuario: formul.usuario,
+      email: formul.email,
       password: formul.password
       
     }

@@ -21,6 +21,18 @@
           
           
         </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Rut</ion-label>
+          <ion-input formControlName="rut"></ion-input>
+
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Correo electrónico</ion-label>
+          <ion-input formControlName="email" name="email" type="email"></ion-input>
+        </ion-item>
+
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
           <ion-input formControlName="password" type="password"></ion-input>
@@ -34,7 +46,7 @@
           
         </ion-item>
         <br>
-        <ion-button (click)="guardar()">
+        <ion-button (click)="guardar()" class="ion-padding" expand="full">
           Registrarse
 
         </ion-button>

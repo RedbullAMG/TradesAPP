@@ -17,8 +17,8 @@
         <form [formGroup] ="formularioLogin">
 
           <ion-item>
-            <ion-label position="floating">Usuario</ion-label>
-            <ion-input formControlName="usuario"></ion-input>
+            <ion-label position="floating" >Correo Electrónico</ion-label>
+            <ion-input formControlName="email" name="email" type="email"></ion-input>
             
             
           </ion-item>
@@ -26,30 +26,47 @@
           <ion-item>
             <ion-label position="floating">Contraseña</ion-label>
             <ion-input formControlName="password" type="password"></ion-input>
+
+            
            
             
           </ion-item>
         </form>
         <br>
-        <ion-button (click)="ingresar()">
+        <ion-button (click)="ingresar()" class="ion-padding"></ion-button>
+        
           Ingresar
-        </ion-button>
+        
+
+        
+        <ion-button [routerLink]="['/crear-cuenta']" color="light" class="ion-padding">Crear Cuenta</ion-button>
+        <br>
+
+
 
       </ion-card-content>
 
+      
+
     </ion-card>
 
-  
+    
+    <ion-card-content>
+      <ion-card #card style="width: 80px; --width: 160px;">
+        <ion-card-content>Card</ion-card-content>
+      </ion-card>
+
+      <ion-button (click)="play()">Play</ion-button>
+      <ion-button (click)="pause()">Pause</ion-button>
+      <ion-button (click)="stop()">Stop</ion-button>
+
+    </ion-card-content>
+    
   
 </ion-content>
 
 <ion-footer>
   <ion-toolbar color="primary">
-  <ion-buttons slot="end">
-    <ion-button [routerLink]="['/registro']">Registrarse</ion-button>
-
-  </ion-buttons>
-
-
+    <p class="ion-text-center">REMODELANDO</p>
   </ion-toolbar>
 </ion-footer>
