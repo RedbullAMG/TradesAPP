@@ -9,7 +9,7 @@ import { AlertController, NavController } from '@ionic/angular';
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
+  styleUrls: ['../login/login.page.scss'],
 })
 export class RegistroPage implements OnInit {
 

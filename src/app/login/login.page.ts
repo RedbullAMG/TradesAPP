@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import type { Animation } from '@ionic/angular';
+import type { Animation, IonModal } from '@ionic/angular';
 import {
   FormGroup,
   FormControl,
@@ -14,11 +14,9 @@ import { AlertController, NavController, AnimationController, IonCard, IonCardCo
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
-  @ViewChild(IonCard, { read: ElementRef }) card: ElementRef<HTMLIonCardElement>;
   
-  private animation: Animation;
-
+ 
+  
   formularioLogin: FormGroup;
 
   constructor(public fb: FormBuilder, public alertController: AlertController,
@@ -29,6 +27,7 @@ export class LoginPage implements OnInit {
       'email': new FormControl("",[Validators.required, Validators.email]),
       'password': new FormControl("",Validators.required)
     })
+    
 
   
 
@@ -36,33 +35,12 @@ export class LoginPage implements OnInit {
 
   }
 
-  ngAfterViewInit() {
-    this.animation = this.animationCtrl
-      .create()
-      .addElement(this.card.nativeElement)
-      .duration(3000)
-      .iterations(Infinity)
-      .keyframes([
-        { offset: 0, width: '80px' },
-        { offset: 0.72, width: 'var(--width)' },
-        { offset: 1, width: '240px' },
-      ]);
-  }
+  
 
-  play() {
-    this.animation.play();
-  }
-
-  pause() {
-    this.animation.pause();
-  }
-
-  stop() {
-    this.animation.stop();
-  }
-
+ 
 
   ngOnInit() {
+    
   }
 
   async ingresar(){
@@ -88,6 +66,38 @@ export class LoginPage implements OnInit {
     }
     
   }
+
+
+  async restablecer(){
+
+    var formul = this.formularioLogin.value;
+    var nom = JSON.parse(localStorage.getItem('nom')|| "[]");
+
+    if(nom.email == formul.email){
+      const alert = await this.alertController.create({
+        
+        message: 'Se ha enviado un link a su correo para restablecer la contraseña',
+        buttons: ['Aceptar'],
+      });
+
+      await alert.present();
+      return;
+    }
+    else{
+      const alert = await this.alertController.create({
+        header: 'Aviso!',
+        subHeader: 'Correo incorrecto',
+        message: 'El correo que ingresaste es incorrecto',
+        buttons: ['Aceptar'],
+      });
+
+      await alert.present();
+      
+    }
+    
+  }
+
+  
 
 
   

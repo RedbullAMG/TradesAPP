@@ -9,12 +9,14 @@
 
 <ion-content>
 
-  <ion-card>
+  <ion-card class="login-section ion-padding">
+    <div class="action-buttons ion-padding">
+      <ion-button class="crear-person">Cuenta de usuario</ion-button>
+    
+      <ion-button [routerLink]="['/registro']" class="crear-trab">Cuenta de Trabajador</ion-button>
 
-    <ion-button>Cuenta de usuario</ion-button>
-    <br>
-    <br>
-    <ion-button [routerLink]="['/registro']">Cuenta de Trabajador</ion-button>
+    </div>
+    
 
 
   </ion-card>
