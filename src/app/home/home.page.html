@@ -1,25 +1,23 @@
-<ion-header>
+  <ion-header>
   <ion-toolbar class="barra-naranja">
     <ion-title>
       TRADES
     </ion-title>
     <ion-buttons slot="end">
-      <ion-item (click)="salir()" routerDirection="root" fill="none" shape="round">
+      <ion-button (click)="salir()" routerDirection="root" fill="clear" shape="round">
         <ion-icon [name]="'exit-outline'"></ion-icon>
-        <ion-label>Salir</ion-label>
-      </ion-item>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+
   <div class="bienvenido">
     <ion-title class="titulo-bienvenido">
-      Bienvenido,
+      Bienvenido, {{ userData.username }}
     </ion-title>
-    <ion-title class="nombre-usuario">
-      {{ userData.username }}
-    </ion-title>
+    
   </div>
 
   <ion-card>
@@ -29,14 +27,14 @@
     <ion-card-content>
       <ion-item lines="none">
         <ion-label>¿Estás disponible?</ion-label>
-        <ion-toggle [(ngModel)]="disponible" color="success" (ionChange)="cambiarDisponibilidad()"></ion-toggle>
+      <ion-toggle [(ngModel)]="disponible" color="success" (ionChange)="cambiarDisponibilidad()"></ion-toggle>
       </ion-item>
     </ion-card-content>
   </ion-card>
 
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Mis Trabajos</ion-card-title>
+      <ion-card-title>Mis Trabajos en Trades</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
@@ -47,32 +45,29 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Comunas de Trabajo</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item *ngFor="let comuna of comunas; let i = index" lines="none">
-          {{ comuna }}
-          <ion-buttons slot="end">
-            <ion-button fill="clear" shape="round" (click)="editarComuna(i)">
-              <ion-icon name="create"></ion-icon>
-            </ion-button>
-            <ion-button fill="clear" shape="round" (click)="eliminarComuna(i)">
-              <ion-icon name="trash"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-item>
-        <ion-item lines="none">
-          <ion-input [(ngModel)]="nuevaComuna" placeholder="Agregar nueva comuna"></ion-input>
-          <ion-button expand="full" shape="round" (click)="agregarComuna()">Agregar</ion-button>
-        </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-  <ion-footer class="ion-padding">
+  <ion-card><mat-form-field class="example-chip-list">
+    <mat-label>Comunas a Trabajar</mat-label>
+    <mat-chip-grid #chipGrid aria-label="Enter comunas">
+      <mat-chip-row *ngFor="let comuna of comunas"
+                    (removed)="remove(comuna)"
+                    [editable]="true"
+                    (edited)="edit(comuna, $event)"
+                    [aria-description]="'press enter to edit ' + comuna.name">
+        {{comuna.name}}
+        <button matChipRemove [attr.aria-label]="'remove ' + comuna.name">
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip-row>
+      <input placeholder="New comuna..."
+             [matChipInputFor]="chipGrid"
+             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+             [matChipInputAddOnBlur]="addOnBlur"
+             (matChipInputTokenEnd)="add($event)"/>
+    </mat-chip-grid>
+  </mat-form-field></ion-card>
+  
+</ion-content>
+  <ion-footer>
     <ion-toolbar class="barra-baja">
       <ion-buttons class="botones-navegacion" style="justify-content: center;">
         
@@ -80,12 +75,13 @@
             <ion-icon name="home"></ion-icon>
             <ion-label>Inicio</ion-label>
           </ion-tab-button>
-       
-        <ion-tab-button [routerLink]="['/pmaestro']" tab="perfil">
-          <ion-icon name="person"></ion-icon>
-          <ion-label>Perfil</ion-label>
+
+          <ion-tab-button [routerLink]="['/pmaestro']" tab="perfil">
+            <ion-icon name="person"></ion-icon>
+            <ion-label>Perfil</ion-label>
+            
+          </ion-tab-button>
           
-        </ion-tab-button>
   
         <ion-tab-button tab="notificaciones">
           <ion-icon name="notifications"></ion-icon>
@@ -99,4 +95,8 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-footer>
+  
+
+
+
   
