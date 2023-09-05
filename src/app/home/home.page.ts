@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 export interface Comuna {
   name: string;
@@ -127,8 +128,17 @@ export class HomePage {
 
 
   
-  
+//ngOnInit() {
+  // Recupera el nombre de usuario del almacenamiento local
+  //const storedUserData = localStorage.getItem('nom');
+  //if (storedUserData) {
+    //const userDataObj = JSON.parse(storedUserData);
+    //this.userData.username = userDataObj.username; // Actualiza el nombre de usuario en el objeto userData
+  //}
+//}
 
 
 
- 
+//userData = {
+  //username: '',
+//};
