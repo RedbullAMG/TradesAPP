@@ -62,8 +62,8 @@ export class RegistroPage implements OnInit {
 
     var nom = {
       email: formul.email,
-      password: formul.password,
-      username: formul.username
+      password: formul.password
+      
       
     }
 
