@@ -1,62 +1,102 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar class="barra-naranja">
     <ion-title>
-     Tradel
+      TRADES
     </ion-title>
     <ion-buttons slot="end">
-      <ion-item (click)="salir()" routerDirection="root" lines="none" detail="false">
-        <ion-icon  [name]="'exit-outline'"></ion-icon>
+      <ion-item (click)="salir()" routerDirection="root" fill="none" shape="round">
+        <ion-icon [name]="'exit-outline'"></ion-icon>
         <ion-label>Salir</ion-label>
       </ion-item>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content>
+  <div class="bienvenido">
+    <ion-title class="titulo-bienvenido">
+      Bienvenido,
+    </ion-title>
+    <ion-title class="nombre-usuario">
+      {{ userData.username }}
+    </ion-title>
+  </div>
+
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Bienvenido</ion-card-title>
+      <ion-card-title>Disponibilidad</ion-card-title>
     </ion-card-header>
-
     <ion-card-content>
-      <ion-item>
-        <ion-label position="stacked">Nombre de Usuario</ion-label>
-        <ion-input type="text" [(ngModel)]="userData.username" disabled></ion-input>
+      <ion-item lines="none">
+        <ion-label>¿Estás disponible?</ion-label>
+        <ion-toggle [(ngModel)]="disponible" color="success" (ionChange)="cambiarDisponibilidad()"></ion-toggle>
       </ion-item>
+    </ion-card-content>
+  </ion-card>
 
-      <ion-item>
-        <ion-label position="stacked">Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="userData.nombre"></ion-input>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label position="stacked">Apellido</ion-label>
-        <ion-input type="text" [(ngModel)]="userData.apellido"></ion-input>
-      </ion-item>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Mis Trabajos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let trabajo of trabajosPendientes" lines="none">
+          {{ trabajo.nombre }}
+          <ion-note slot="end">{{ trabajo.fecha }}</ion-note>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
-      <ion-item>
-        <ion-label position="stacked">Nivel de Educación</ion-label>
-        <ion-select [(ngModel)]="userData.nivelEducacion" label="Seleccionar">
-          <ion-select-option value="Basica">Basica</ion-select-option>
-          <ion-select-option value="Media">Media</ion-select-option>
-          <ion-select-option value="Universitaria">Universitaria</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="stacked">Fecha de Nacimiento</ion-label>
-        <div class="custom-date-input">
-          <input
-            type="text"
-            [(ngModel)]="userData.fechaNacimiento"
-            readonly
-            (click)="abrirCalendario()"
-          />
-          <ion-icon name="calendar" (click)="abrirCalendario()"></ion-icon>
-        </div>
-      </ion-item>
-      
-      
-
-  <ion-button expand="full" (click)="limpiarCampos()">Limpiar</ion-button>
-  <ion-button expand="full" (click)="mostrarInformacion()">Mostrar</ion-button>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Comunas de Trabajo</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let comuna of comunas; let i = index" lines="none">
+          {{ comuna }}
+          <ion-buttons slot="end">
+            <ion-button fill="clear" shape="round" (click)="editarComuna(i)">
+              <ion-icon name="create"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" shape="round" (click)="eliminarComuna(i)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-input [(ngModel)]="nuevaComuna" placeholder="Agregar nueva comuna"></ion-input>
+          <ion-button expand="full" shape="round" (click)="agregarComuna()">Agregar</ion-button>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-footer class="ion-padding">
+    <ion-toolbar class="barra-baja">
+      <ion-buttons class="botones-navegacion" style="justify-content: center;">
+        
+          <ion-tab-button tab="inicio">
+            <ion-icon name="home"></ion-icon>
+            <ion-label>Inicio</ion-label>
+          </ion-tab-button>
+       
+        <ion-tab-button [routerLink]="['/pmaestro']" tab="perfil">
+          <ion-icon name="person"></ion-icon>
+          <ion-label>Perfil</ion-label>
+          
+        </ion-tab-button>
+  
+        <ion-tab-button tab="notificaciones">
+          <ion-icon name="notifications"></ion-icon>
+          <ion-label>Notificaciones</ion-label>
+        </ion-tab-button>
+  
+        <ion-tab-button tab="soporte">
+          <ion-icon name="help"></ion-icon>
+          <ion-label>Soporte</ion-label>
+        </ion-tab-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>
+  

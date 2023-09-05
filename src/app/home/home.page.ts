@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController, AlertController, PickerController } from '@ionic/angular';
+import { Component, NgModule } from '@angular/core';
+import { AlertController, NavController } from '@ionic/angular'; // Importa AlertController y NavController
+
 
 @Component({
   selector: 'app-home',
@@ -9,109 +10,43 @@ import { NavController, AlertController, PickerController } from '@ionic/angular
 export class HomePage {
   userData = {
     username: '',
-    nombre: '',
-    apellido: '',
-    nivelEducacion: '',
-    fechaNacimiento: '',
   };
-
-  formData = {
-    nombre: '',
-    correo: '',
-  };
+  
+  userRatings: any[] = [];
+  disponible = false;
+  comunas: string[] = [];
+  nuevaComuna: string = '';
+  trabajosPendientes = [
+    { nombre: 'Instalacion de calefont', fecha: '10/09/2023' },
+    { nombre: 'Mantencion de calefont', fecha: '15/09/2023' },
+  
+  ];
 
   constructor(
-    public navCtrl: NavController,
-    public alertController: AlertController,
-    private pickerCtrl: PickerController // Agrega PickerController en el constructor
+    private alertController: AlertController, 
+    private navCtrl: NavController 
   ) {}
 
-  limpiarCampos() {
-    this.userData.nombre = '';
-    this.userData.apellido = '';
-    this.userData.nivelEducacion = '';
-    this.userData.fechaNacimiento = '';
-  }
-
-  async mostrarInformacion() {
-    const alert = await this.alertController.create({
-      header: 'Información',
-      message: `Nombre: ${this.userData.nombre} Apellido: ${this.userData.apellido}`,
-      buttons: ['Cerrar'],
-    });
-  
-    await alert.present();
-  }
-
-  submitForm() {
-    console.log('Formulario enviado:', this.formData);
-  }
-
-  fechaNacimientoChanged(event: any) {
-    console.log('Fecha de Nacimiento seleccionada:', event.detail.value);
-  }
-  async abrirCalendario() {
-    const picker = await this.pickerCtrl.create({
-      columns: [
-        {
-          name: 'year',
-          options: this.generateDateOptions('year'),
-        },
-        {
-          name: 'month',
-          options: this.generateDateOptions('month'),
-        },
-        {
-          name: 'day',
-          options: this.generateDateOptions('day'),
-        },
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'Aceptar',
-          handler: (value) => {
-            const selectedDate = `${value.year.text}-${value.month.text}-${value.day.text}`;
-            this.userData.fechaNacimiento = selectedDate;
-          },
-        },
-      ],
-    });
-  
-    await picker.present();
-  }
-  
-  private generateDateOptions(type: 'year' | 'month' | 'day') {
-    const options = [];
-    const currentYear = new Date().getFullYear();
+  cambiarDisponibilidad() {
     
-    if (type === 'year') {
-      for (let year = currentYear - 70; year <= currentYear; year++) {
-        options.push({
-          text: year.toString(),
-          value: year,
-        });
-      }
-    } else if (type === 'month') {
-      for (let month = 1; month <= 12; month++) {
-        options.push({
-          text: month.toString(),
-          value: month,
-        });
-      }
-    } else if (type === 'day') {
-      for (let day = 1; day <= 31; day++) {
-        options.push({
-          text: day.toString(),
-          value: day,
-        });
-      }
+  }
+
+  editarComuna(index: number) {
+    const comunaEditada = prompt('Editar comuna', this.comunas[index]);
+    if (comunaEditada !== null) {
+      this.comunas[index] = comunaEditada;
     }
-  
-    return options;
+  }
+
+  eliminarComuna(index: number) {
+    this.comunas.splice(index, 1);
+  }
+
+  agregarComuna() {
+    if (this.nuevaComuna.trim() !== '') {
+      this.comunas.push(this.nuevaComuna);
+      this.nuevaComuna = ''; 
+    }
   }
 
   async salir(){

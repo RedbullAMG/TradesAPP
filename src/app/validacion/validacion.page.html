@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-card class="validation-card">
+    <ion-card-header>
+      <ion-card-title>Saca una imagen visible a tu documento de identidad y envíala</ion-card-title>
+    </ion-card-header>
+    
+    <ion-card-content>
+      <h6>Nuestro equipo dentro de 48 horas validará la información y tendrás acceso a tu cuenta.</h6>
+
+      <ion-fab-button (click)="takePhoto()" class="camera-button">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+
+      <ion-img [src]="photoData" *ngIf="photoData"></ion-img>
+
+      <ion-button expand="full" (click)="sendEmail()" *ngIf="photoData">
+        Enviar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

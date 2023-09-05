@@ -23,7 +23,17 @@ const routes: Routes = [
     path: 'crear-cuenta',
     loadChildren: () => import('./crear-cuenta/crear-cuenta.module').then( m => m.CrearCuentaPageModule)
   },
- 
+  
+  {
+    path: 'pmaestro',
+    loadChildren: () => import('./pmaestro/pmaestro.module').then( m => m.PmaestroPageModule)
+  },
+  
+  {
+    path: 'validacion',
+    loadChildren: () => import('./validacion/validacion.module').then( m => m.ValidacionPageModule)
+  },
+
   
 ];
 
