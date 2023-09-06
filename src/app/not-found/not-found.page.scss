@@ -1,0 +1,38 @@
+ion-content{
+    --background: linear-gradient(0deg,rgba(0,0,0,0.7), rgba(0,0,0,0.1)),
+    url("/assets/icon/404.jpeg") no-repeat center center / cover;
+}
+
+.barra-naranja {
+    --background: linear-gradient(to bottom, #ededed, #74a79a); 
+    color: #fff; 
+  }
+
+
+  ion-card {
+    color: white;
+    opacity: 0.5;
+    background: blue;
+    margin: 10px;
+  
+    --background: red;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    ion-card {
+      --background: green;
+    }
+  }
+
+  .centrar-animacion{
+
+    margin-top: 90%;
+    display: flex;
+  }
+
+
+  .centrar-play{
+
+    margin-left: 30%;
+    margin-top: 15px;
+  }

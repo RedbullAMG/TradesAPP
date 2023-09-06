@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import {MatChipEditedEvent, MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 export interface Comuna {
   name: string;
@@ -88,7 +88,7 @@ export class HomePage {
     const storedUserData = localStorage.getItem('nom');
     if (storedUserData) {
       const userDataObj = JSON.parse(storedUserData);
-      this.userData.username = userDataObj.username; // Actualiza el nombre de usuario en el objeto userData
+      this.userData.username = userDataObj.usuario; // Actualiza el nombre de usuario en el objeto userData
     }
   }
 
@@ -117,9 +117,9 @@ export class HomePage {
     await alert.present();
   }
 
-  //irPerfil() {
-    //this.router.navigate(['/pmaestro']);
-  //}
+  irPerfil() {
+    this.router.navigate(['/pmaestro']);
+  }
 
   
 }

@@ -1,3 +1,10 @@
+ion-content{
+  --background: linear-gradient(0deg,rgba(0,0,0,0.7), rgba(0,0,0,0.1)),
+  url("/assets/icon/trade.jpeg") no-repeat center center / cover;
+}
+
+
+
 ion-footer {
   position: fixed;
   bottom: 0;
@@ -45,9 +52,17 @@ ion-select-option {
   align-items: center;
 }
 .barra-naranja {
-    --background: linear-gradient(to bottom, #ededed, #f58c4f); 
-    color: #fff; 
+  --background: linear-gradient(to bottom, #ededed, #74a79a); 
+  color: #fff;
   }
+
+  
+  .boton-gris {
+    --background: #ffac58;
+    --color: white; 
+  }
+
+    
 
 
 .toggle-verde .toggle-inner {
@@ -63,7 +78,7 @@ ion-select-option {
   align-items: center;
 }
  .barra-baja{
-  --background: linear-gradient(to bottom, #ededed, #f58c4f); 
+  --background: linear-gradient(to bottom, #ededed, #74a79a);
      
   }
   .example-chip-list {

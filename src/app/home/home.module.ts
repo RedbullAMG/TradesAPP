@@ -21,4 +21,4 @@ import {NgFor} from '@angular/common';
   ],
   declarations: [HomePage]
 })
-export class HomePageModule {} {}
+export class HomePageModule {}

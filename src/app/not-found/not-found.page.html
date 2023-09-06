@@ -1,0 +1,22 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="barra-naranja">
+    <ion-title>not-found</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">not-found</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-title size="large">not-found</ion-title>
+
+  <ion-card #card class="centrar-animacion">
+    <ion-card-content>Card</ion-card-content>
+  </ion-card>
+  
+  <ion-button [routerLink]="['/home']" (click)="play()" class="centrar-play">Volver Home</ion-button>
+  <p (click)="stop()"></p>
+  
+</ion-content>

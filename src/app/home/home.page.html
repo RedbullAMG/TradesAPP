@@ -1,7 +1,7 @@
   <ion-header>
   <ion-toolbar class="barra-naranja">
     <ion-title>
-      TRADES
+      TRADE
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="salir()" routerDirection="root" fill="clear" shape="round">
@@ -45,6 +45,7 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+
   <ion-card><mat-form-field class="example-chip-list">
     <mat-label>Comunas a Trabajar</mat-label>
     <mat-chip-grid #chipGrid aria-label="Enter comunas">
@@ -54,8 +55,8 @@
                     (edited)="edit(comuna, $event)"
                     [aria-description]="'press enter to edit ' + comuna.name">
         {{comuna.name}}
-        <button matChipRemove [attr.aria-label]="'remove ' + comuna.name">
-          <mat-icon>cancel</mat-icon>
+        <button matChipRemove [attr.aria-label]="'remove' + comuna.name">
+          <mat-icon>x</mat-icon>
         </button>
       </mat-chip-row>
       <input placeholder="New comuna..."
@@ -76,7 +77,7 @@
             <ion-label>Inicio</ion-label>
           </ion-tab-button>
 
-          <ion-tab-button [routerLink]="['/pmaestro']" tab="perfil">
+          <ion-tab-button (click)="irPerfil()" tab="perfil">
             <ion-icon name="person"></ion-icon>
             <ion-label>Perfil</ion-label>
             
