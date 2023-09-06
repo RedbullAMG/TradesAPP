@@ -1,5 +1,5 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+  <ion-toolbar class="barra-naranja">
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
@@ -18,7 +18,7 @@
         <ion-item>
           <ion-icon name="person-outline"></ion-icon>
           <ion-label position="floating">Nombre de Usuario</ion-label>
-          <ion-input formControlName="usuario"></ion-input>
+          <ion-input formControlName="usuario" placeholder="Ingrese su usuario sin números"></ion-input>
           
           
         </ion-item>
@@ -38,14 +38,14 @@
         <ion-item>
           <ion-icon name="lock-closed-outline"></ion-icon>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input formControlName="password" type="password"></ion-input>
+          <ion-input formControlName="password" type="password" placeholder="1 mayus + 3 caracteres + 4 números"></ion-input>
           
           
         </ion-item>
         <ion-item>
           <ion-icon name="lock-closed-outline"></ion-icon>
           <ion-label position="floating">Confirmar Contraseña</ion-label>
-          <ion-input formControlName="confirmacionPassword" type="password"></ion-input>
+          <ion-input formControlName="confirmacionPassword" type="password" placeholder="1 mayus + 3 caracteres + 4 números"></ion-input>
           
           
         </ion-item>

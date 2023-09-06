@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import {
   FormGroup,
   FormControl,
@@ -19,11 +20,11 @@ export class RegistroPage implements OnInit {
     public navCtrl: NavController) { 
     this.formularioRegistro = this.fb.group({
 
-      'usuario': new FormControl("", Validators.required),
+      'usuario': new FormControl("", [Validators.required, noNumbersValidator]),
       'rut': new FormControl("", Validators.required),
       'email': new FormControl("", [Validators.required, Validators.email]),
-      'password': new FormControl("", Validators.required),
-      'confirmacionPassword': new FormControl ("", Validators.required)
+      'password': new FormControl("", [Validators.required, passwordValidator]),
+      'confirmacionPassword': new FormControl ("", [Validators.required, passwordValidator])
 
     });
 
@@ -32,6 +33,8 @@ export class RegistroPage implements OnInit {
 
   ngOnInit() {
   }
+
+
 
   async guardar(){
     var formul = this.formularioRegistro.value;
@@ -70,4 +73,32 @@ export class RegistroPage implements OnInit {
 
   }
 
+  
+
+}
+
+function passwordValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const password = control.value;
+  const hasFourNumbers = /\d{4}/.test(password);
+  const hasThreeCharacters = /[a-zA-Z]{3}/.test(password);
+  const hasUppercase = /[A-Z]/.test(password);
+
+  if (hasFourNumbers && hasThreeCharacters && hasUppercase) {
+    return null; 
+
+  } else {
+    return { invalidPassword: true }; 
+  }
+}
+
+
+function noNumbersValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const username = control.value;
+  const hasNumbers = /\d/.test(username); 
+
+  if (hasNumbers) {
+    return { containsNumbers: true }; 
+  } else {
+    return null; 
+  }
 }
