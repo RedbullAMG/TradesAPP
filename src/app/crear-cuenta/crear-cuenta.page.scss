@@ -1,6 +1,6 @@
 ion-content{
     --background: linear-gradient(0deg,rgba(0,0,0,0.7), rgba(0,0,0,0.1)),
-    url("/assets/icon/sol.jpg") no-repeat center center / cover;
+    url("/assets/icon/trade.jpeg") no-repeat center center / cover;
 }
 
 
@@ -17,7 +17,7 @@ ion-content{
     border-top-left-radius: 46px;
     border-top-right-radius: 46px;
     --background: linear-gradient(0deg,rgba(0,0,0,0.7), rgba(0,0,0,0.1)),
-    url("/assets/icon/sol.jpg") no-repeat center center / cover;
+    url("/assets/icon/trade.jpg") no-repeat center center / cover;
   
 
 
@@ -25,7 +25,7 @@ ion-content{
   .action-buttons{
     text-align: center;
     .crear-person{
-        --background: #f9b801;
+        --background: #e4af59d9;
         width: 100%;
         font-weight: bold;
         margin-top: 80px;
@@ -36,6 +36,7 @@ ion-content{
         color: #7b7b7b;
     }
     .crear-trab{
+        --background: #738d85a0;
         --border-color: #b4b4b4;
         -color: #000000;
         font-weight: bold;
@@ -45,4 +46,8 @@ ion-content{
 }
 
 }
+.barra-naranja {
+    --background: linear-gradient(to bottom, #ededed, #74a79a); 
+    color: #fff;
+    }
 

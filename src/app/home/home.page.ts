@@ -84,11 +84,11 @@ export class HomePage {
 
 
   ngOnInit() {
-    // Recupera el nombre de usuario del almacenamiento local
+  
     const storedUserData = localStorage.getItem('nom');
     if (storedUserData) {
       const userDataObj = JSON.parse(storedUserData);
-      this.userData.username = userDataObj.usuario; // Actualiza el nombre de usuario en el objeto userData
+      this.userData.username = userDataObj.usuario; 
     }
   }
 
