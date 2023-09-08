@@ -44,7 +44,7 @@ export class RegistroPage implements OnInit {
       const alert = await this.alertController.create({
         header: 'Aviso!',
         subHeader: 'Presta Atención',
-        message: 'Tienes que llenar todos los campos y proporcionar un correo válido',
+        message: 'Tienes que llenar todos los campos e ingresar datos correctos',
         buttons: ['Aceptar'],
       });
 

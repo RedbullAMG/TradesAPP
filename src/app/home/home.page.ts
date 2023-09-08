@@ -84,6 +84,8 @@ export class HomePage {
 
 
   ngOnInit() {
+
+    //Aquí se hace la interpolación//
   
     const storedUserData = localStorage.getItem('nom');
     if (storedUserData) {
@@ -91,6 +93,8 @@ export class HomePage {
       this.userData.username = userDataObj.usuario; 
     }
   }
+
+  //Código botón toggle
 
   cambiarDisponibilidad() {
     
