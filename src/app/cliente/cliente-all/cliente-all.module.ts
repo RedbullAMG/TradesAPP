@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PmaestroPageRoutingModule } from './pmaestro-routing.module';
+import { ClienteAllPageRoutingModule } from './cliente-all-routing.module';
 
-import { PmaestroPage } from './pmaestro.page';
-
+import { ClienteAllPage } from './cliente-all.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PmaestroPageRoutingModule
+    ClienteAllPageRoutingModule
   ],
-  declarations: [PmaestroPage]
+  declarations: [ClienteAllPage]
 })
-export class PmaestroPageModule {}
+export class ClienteAllPageModule {}

@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PmaestroPageRoutingModule } from './pmaestro-routing.module';
+import { ProductDetailPageRoutingModule } from './product-detail-routing.module';
 
-import { PmaestroPage } from './pmaestro.page';
-
+import { ProductDetailPage } from './product-detail.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PmaestroPageRoutingModule
+    ProductDetailPageRoutingModule
   ],
-  declarations: [PmaestroPage]
+  declarations: [ProductDetailPage]
 })
-export class PmaestroPageModule {}
+export class ProductDetailPageModule {}
