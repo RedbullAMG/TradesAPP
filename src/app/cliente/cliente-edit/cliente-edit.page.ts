@@ -38,10 +38,10 @@ export class ClienteEditPage implements OnInit {
     this.getCliente(this.route.snapshot.params['id']);
     // Especificamos Validaciones por medio de FormGroup
     this.clientForm = this.formBuilder.group({
-      'prod_name': [null, Validators.required],
-      'prod_apellido': [null, Validators.required],
-      'prod_email': [null, Validators.required],
-      'prod_clave': [null, Validators.required]
+      'clien_name': [null, Validators.required],
+      'clien_apellido': [null, Validators.required],
+      'clien_email': [null, Validators.required],
+      'clien_clave': [null, Validators.required]
     });
   }
   async onFormSubmit(form: NgForm) {

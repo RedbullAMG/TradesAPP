@@ -15,19 +15,19 @@
   <form [formGroup]="productForm" (ngSubmit)="onFormSubmit(productForm.value)">
     <ion-item>
       <ion-label position="floating">Nombre</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.first_name" formControlName="clien_name"></ion-input>
+      <ion-input type="text" [(ngModel)]="cliente.first_name" formControlName="clien_name" placeholder="Ingrese su Nombre"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Apellido</ion-label>
-      <ion-input type="text" [(ngModel)]="cliente.last_name" formControlName="clien_apellido"></ion-input>
+      <ion-input type="text" [(ngModel)]="cliente.last_name" formControlName="clien_apellido" placeholder="Ingrese su contraseña"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Correo Electrónico</ion-label>
-      <ion-textarea [(ngModel)]="cliente.email" formControlName="clien_email"></ion-textarea>
+      <ion-textarea [(ngModel)]="cliente.email" formControlName="clien_email" placeholder="Ingrese su email"></ion-textarea>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="number" [(ngModel)]="cliente.clave" formControlName="clien_clave"></ion-input>
+      <ion-input type="number" [(ngModel)]="cliente.clave" formControlName="clien_clave" placeholder="Ingrese su contraseña"></ion-input>
     </ion-item>
     <ion-button type="submit" shape="round" color="primary" expand="block"
       [disabled]="!productForm.valid">Submit</ion-button>

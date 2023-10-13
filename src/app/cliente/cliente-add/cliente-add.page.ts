@@ -20,10 +20,10 @@ export class ClienteAddPage implements OnInit {
   // Generalmente se usa una interface, sin embargo para jugar utilizaremos  una clase
   cliente: Clcliente = {
     id: 1511
-    , first_name: 'Macarena Constanza'
-    , last_name: 'Piña'
-    , email: 'macarena@soco.cl'
-    , clave: '123456'
+    , first_name: ''
+    , last_name: ''
+    , email: ''
+    , clave: ''
   };
 
   // Injectamos FormBuilder, el cual nos permitirá realizar validaciones                         

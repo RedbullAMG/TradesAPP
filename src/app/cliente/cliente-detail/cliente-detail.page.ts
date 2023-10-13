@@ -17,7 +17,7 @@ export class ClienteDetailPage implements OnInit {
   cliente: Clcliente = {
     id: 1511
     , first_name: 'Macarena Constanza'
-    , last_name: 'El Ingenioso'
+    , last_name: 'Piña'
     , email: 'macarena@soco.cl'
     , clave: '123456'
   

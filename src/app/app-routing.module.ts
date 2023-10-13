@@ -77,11 +77,11 @@ const routes: Routes = [
     loadChildren: () => import('./cliente/cliente-all/cliente-all.module').then( m => m.ClienteAllPageModule)
   },
   {
-    path: 'cliente-detail',
+    path: 'cliente-detail/:id',
     loadChildren: () => import('./cliente/cliente-detail/cliente-detail.module').then( m => m.ClienteDetailPageModule)
   },
   {
-    path: 'cliente-edit',
+    path: 'cliente-edit/:id',
     loadChildren: () => import('./cliente/cliente-edit/cliente-edit.module').then( m => m.ClienteEditPageModule)
   },
   {
