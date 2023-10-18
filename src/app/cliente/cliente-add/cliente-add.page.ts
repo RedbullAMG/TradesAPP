@@ -19,7 +19,7 @@ export class ClienteAddPage implements OnInit {
   productForm!: FormGroup;
   // Generalmente se usa una interface, sin embargo para jugar utilizaremos  una clase
   cliente: Clcliente = {
-    id: 1511
+    id: 1513
     , first_name: ''
     , last_name: ''
     , email: ''
