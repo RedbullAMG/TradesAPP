@@ -38,7 +38,7 @@ const routes: Routes = [
   {
     path: 'validacion',
     loadChildren: () => import('./validacion/validacion.module').then( m => m.ValidacionPageModule),
-    canActivate: [IngresadoGuard]
+    
   },
   {
     path: 'product-add',

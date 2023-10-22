@@ -17,9 +17,51 @@
         Enviar
       </ion-button>
     </ion-card-content>
+
+    <ion-content>
+      <ion-card class="validation-card">
+        <ion-card-header>
+          <ion-card-title>Saca una imagen visible a tu documento de identidad y envíala</ion-card-title>
+        </ion-card-header>
+        
+        <ion-card-content>
+          <h6>Nuestro equipo dentro de 48 horas validará la información y tendrás acceso a tu cuenta.</h6>
+    
+          <ion-fab-button (click)="takePhoto()" class="camera-button">
+            <ion-icon name="camera"></ion-icon>
+          </ion-fab-button>
+    
+          <ion-img [src]="photoData" *ngIf="photoData"></ion-img>
+    
+          <ion-button expand="full" (click)="enviarImagen()" *ngIf="photoData">
+            Enviar
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    
+      
+      
+    
+    </ion-content>
   </ion-card>
 
-  
+
+
+  <ion-card>
+    <h6> Tu Ubicacion</h6>
+    <ion-fab-button #geolocation (click)="getCurrentPosition()" class="camera-button">
+      <ion-icon name="location"> </ion-icon> <!-- Agrega el icono de geolocalización aquí -->
+    </ion-fab-button>
+    
+</ion-card>
+
+  <ion-card>
+    <div id="map"></div>
+  </ion-card>
 
 
 </ion-content>
+
+
+
+
