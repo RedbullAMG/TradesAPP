@@ -7,7 +7,7 @@ import { catchError, tap, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
 // creamos Constantes que utilizaremos en el envio
-const apiUrl = "http://localhost:3000/productos";
+const apiUrl = "http://sumativa2.onrender.com/api/productos/";
 const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
 @Injectable({
@@ -52,31 +52,31 @@ export class ProductServiceService {
 
 
   //  Obtener un Producto
-  getProduct(id: String): Observable<ClProducto> {
+  getProduct(idProducto: string): Observable<ClProducto> {
     //const url = '${apiUrl}/${id}';
     //return this.http.get<Producto>(url).pipe(
-    console.log("getProduct ID:" + id);
-    return this.http.get<ClProducto>(apiUrl + "/" + id)
+    console.log("getProduct ID:" + idProducto);
+    return this.http.get<ClProducto>(apiUrl + "/" + idProducto)
       .pipe(
-        tap(_ => console.log('fetched product id=${id}')),
-        catchError(this.handleError<ClProducto>('getProduct id=${id}'))
+        tap(_ => console.log('fetched product idProducto=${idProducto}')),
+        catchError(this.handleError<ClProducto>('getProduct idProducto=${idProducto}'))
       );
   }
 
-  deleteProduct(id: number): Observable<ClProducto> {
+  deleteProduct(idProducto: number): Observable<ClProducto> {
     //const url = '${apiUrl}/${id}';
     //return this.http.delete<Producto>(url, httpOptions).pipe(
-    return this.http.delete<ClProducto>(apiUrl + "/" + id, httpOptions)
+    return this.http.delete<ClProducto>(apiUrl + "/" + idProducto, httpOptions)
       .pipe(
-        tap(_ => console.log('deleted product id=${id}')),
+        tap(_ => console.log('deleted product idProducto=${idProducto}')),
         catchError(this.handleError<ClProducto>('deleteProduct'))
       );
   }
 
-  updateProduct(id: number, producto: ClProducto): Observable<ClProducto> {
-    return this.http.put<ClProducto>(apiUrl + "/" + id, producto, httpOptions)
+  updateProduct(idProducto: number, producto: ClProducto): Observable<ClProducto> {
+    return this.http.put<ClProducto>(apiUrl + "/" + idProducto, producto, httpOptions)
       .pipe(
-        tap(_ => console.log('updated product id=${id}')),
+        tap(_ => console.log('updated product idProducto=${idProducto}')),
         catchError(this.handleError<any>('updateProduct'))
       );
   }

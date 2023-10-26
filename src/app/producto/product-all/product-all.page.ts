@@ -11,7 +11,7 @@ export class ProductAllPage implements OnInit {
   buttonLeerDisabled = false
   buttonActualizarDisabled = false
   buttonCrearDisabled = false
-  producto: ClProducto = { id: 1, nombre: '', descripcion: '', precio: 0, fecha: new Date(),cantidad:0 };;
+  producto: ClProducto = { idProducto: 1, codigo: '', nombreprod: '', precio: 0,cantidad:0, fechaNacimiento: new Date(), rut: null, dv: '', enfermedad: '', fonocontacto: 0, categoria: '', editorial: '', raza:'', edad: 0, altura: 0, hrini: '', hrfin: '', direccion: '', fCreacion: new Date() };;
 
   constructor() { }
   ngOnInit() {  }

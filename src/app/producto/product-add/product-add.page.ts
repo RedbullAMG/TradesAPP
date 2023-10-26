@@ -19,12 +19,25 @@ export class ProductAddPage implements OnInit {
   productForm!: FormGroup;
   // Generalmente se usa una interface, sin embargo para jugar utilizaremos  una clase
   producto: ClProducto = {
-    id: 1511
-    , nombre: 'Harrys el Magnifico'
-    , descripcion: 'El Ingenioso'
-    , precio: 100
-    , fecha: new Date()
-    , cantidad: 200
+   idProducto: 3,
+    codigo: "0",
+    nombreprod: "cocina 4 platos",
+    precio: 40000,
+    cantidad: 96,
+    fechaNacimiento: new Date(),
+    rut: null,
+    dv: "0",
+    enfermedad: "0",
+    fonocontacto: 0,
+    categoria: "0",
+    editorial: "0",
+    raza: "0",
+    edad: 0,
+    altura: 0,
+    hrini: "0",
+    hrfin: "0",
+    direccion: "0",
+    fCreacion: new Date()
   };
 
   // Injectamos FormBuilder, el cual nos permitirá realizar validaciones                         
@@ -41,10 +54,9 @@ export class ProductAddPage implements OnInit {
   ngOnInit() {
     // Especificamos que todos los campos son obligatorios
     this.productForm = this.formBuilder.group({
-      "prod_name": [null, Validators.required],
-      'prod_desc': [null, Validators.required],
-      'prod_price': [null, Validators.required],
-      'prod_cantidad': [null, Validators.required]
+      "prod_categoria": [null, Validators.required],
+      'prod_nombreprod': [null, Validators.required],
+      'prod_fCreacion': [null, Validators.required],
     });
   }
   // se ejecutará cuando presione el Submit
