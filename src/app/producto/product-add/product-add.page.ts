@@ -20,7 +20,7 @@ export class ProductAddPage implements OnInit {
   // Generalmente se usa una interface, sin embargo para jugar utilizaremos  una clase
   producto: ClProducto = {
    idProducto: 3,
-    codigo: "0",
+    codigo: "09-G09",
     nombreprod: "cocina 4 platos",
     precio: 40000,
     cantidad: 96,

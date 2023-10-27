@@ -17,7 +17,7 @@ export class ProductDetailPage implements OnInit {
   producto: ClProducto = {
     idProducto: 3,
     codigo: "0",
-    nombreprod: "cocina 4 platos",
+    nombreprod: "0",
     precio: 40000,
     cantidad: 96,
     fechaNacimiento: new Date(),
