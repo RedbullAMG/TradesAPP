@@ -21,9 +21,9 @@ export class ProductAddPage implements OnInit {
   producto: ClProducto = {
    idProducto: 3,
     codigo: "09-G09",
-    nombreprod: "cocina 4 platos",
-    precio: 40000,
-    cantidad: 96,
+    nombreprod: "0",
+    precio: 0,
+    cantidad: 0,
     fechaNacimiento: new Date(),
     rut: null,
     dv: "0",
