@@ -19,13 +19,13 @@ export class ProductAddPage implements OnInit {
   productForm!: FormGroup;
   // Generalmente se usa una interface, sin embargo para jugar utilizaremos  una clase
   producto: ClProducto = {
-   idProducto: 3,
+    idProducto: 0,
     codigo: "09-G09",
     nombreprod: "0",
     precio: 0,
     cantidad: 0,
     fechaNacimiento: new Date(),
-    rut: null,
+    rut: 0,
     dv: "0",
     enfermedad: "0",
     fonocontacto: 0,

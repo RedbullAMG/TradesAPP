@@ -1,6 +1,7 @@
 import { Component,ViewChild,ElementRef } from '@angular/core';
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { PhotoService } from '../services/photo.service';
 import { AlertController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { GoogleMap } from '@capacitor/google-maps';
@@ -19,17 +20,12 @@ export class ValidacionPage {
   photoData: SafeResourceUrl | undefined;
   @ViewChild('geolocation') geolocationElement: ElementRef;
   map: GoogleMap | undefined;
-  constructor(private sanitizer: DomSanitizer, public alertController: AlertController) { }
+  constructor(private sanitizer: DomSanitizer, public alertController: AlertController, public photoService: PhotoService) { }
 
- 
+
 
   async takePhoto() {
-    const photo = await Camera.getPhoto({
-      resultType: CameraResultType.Uri,
-      source: CameraSource.Camera,
-      quality: 100,
-    });
-    this.photoData = this.sanitizer.bypassSecurityTrustResourceUrl(photo.webPath ?? '');
+    this.photoService.addNewToGallery();
   }
 
   sendEmail() {

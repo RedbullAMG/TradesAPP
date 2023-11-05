@@ -27,9 +27,11 @@
         <ion-card-content>
           <h6>Nuestro equipo dentro de 48 horas validará la información y tendrás acceso a tu cuenta.</h6>
     
-          <ion-fab-button (click)="takePhoto()" class="camera-button">
-            <ion-icon name="camera"></ion-icon>
-          </ion-fab-button>
+          <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+            <ion-fab-button (click)="takePhoto()">
+              <ion-icon name="camera"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
     
           <ion-img [src]="photoData" *ngIf="photoData"></ion-img>
     

@@ -6,6 +6,7 @@ import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {LiveAnnouncer} from '@angular/cdk/a11y';
 
 
+
 export interface Comuna {
   name: string;
 }
@@ -123,6 +124,10 @@ export class HomePage {
 
   irPerfil() {
     this.router.navigate(['/pmaestro']);
+  }
+
+  irSoporte() {
+    this.router.navigate(['/product-add']);
   }
 
   

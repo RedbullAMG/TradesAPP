@@ -15,13 +15,13 @@ import { ProductServiceService } from '../product-service.service';
 export class ProductDetailPage implements OnInit {
   // Creamos registro a utilizar en el Html
   producto: ClProducto = {
-    idProducto: 3,
-    codigo: "0",
+    idProducto: 0,
+    codigo: "09-G09",
     nombreprod: "0",
-    precio: 40000,
-    cantidad: 96,
+    precio: 0,
+    cantidad: 0,
     fechaNacimiento: new Date(),
-    rut: null,
+    rut: 0,
     dv: "0",
     enfermedad: "0",
     fonocontacto: 0,
@@ -52,12 +52,12 @@ export class ProductDetailPage implements OnInit {
 
 // Método que permite leer el producto
   async getProduct() {
-    console.log("getProduct **************** ParamMap ID:" + this.route.snapshot.paramMap.get('idProducto'));
+    console.log("getProduct **************** ParamMap ID:" + this.route.snapshot.paramMap.get('id'));
     // Creamos un Wait
     const loading = await this.loadingController.create({ message: 'Loading...' });
     // Mostramos el Wait
     await loading.present();
-    await this.restApi.getProduct(this.route.snapshot.paramMap.get('idProducto')!)
+    await this.restApi.getProduct(+this.route.snapshot.paramMap.get('id')!)
       .subscribe({
         next: (res) => {
           console.log("Data *****************");

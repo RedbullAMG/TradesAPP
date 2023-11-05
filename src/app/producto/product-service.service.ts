@@ -45,6 +45,7 @@ export class ProductServiceService {
     console.log("getProducts ()");
     return this.http.get<ClProducto[]>(apiUrl)
       .pipe(
+        map((productos) => productos.filter((producto) => producto.codigo === '09-G09')),
         tap(heroes => console.log('fetched products')),
         catchError(this.handleError('getProducts', []))
       );
@@ -52,31 +53,31 @@ export class ProductServiceService {
 
 
   //  Obtener un Producto
-  getProduct(idProducto: string): Observable<ClProducto> {
+  getProduct(idProducto: number): Observable<ClProducto> {
     //const url = '${apiUrl}/${id}';
     //return this.http.get<Producto>(url).pipe(
     console.log("getProduct ID:" + idProducto);
-    return this.http.get<ClProducto>(apiUrl + "/" + idProducto)
+    return this.http.get<ClProducto>(apiUrl + idProducto)
       .pipe(
-        tap(_ => console.log('fetched product idProducto=${idProducto}')),
-        catchError(this.handleError<ClProducto>('getProduct idProducto=${idProducto}'))
+        tap(_ => console.log('fetched product id=${idProducto}')),
+        catchError(this.handleError<ClProducto>('getProduct id=${idProducto}'))
       );
   }
 
   deleteProduct(idProducto: number): Observable<ClProducto> {
     //const url = '${apiUrl}/${id}';
     //return this.http.delete<Producto>(url, httpOptions).pipe(
-    return this.http.delete<ClProducto>(apiUrl + "/" + idProducto, httpOptions)
+    return this.http.delete<ClProducto>(apiUrl + idProducto, httpOptions)
       .pipe(
-        tap(_ => console.log('deleted product idProducto=${idProducto}')),
+        tap(_ => console.log('deleted product id=${idProducto}')),
         catchError(this.handleError<ClProducto>('deleteProduct'))
       );
   }
 
   updateProduct(idProducto: number, producto: ClProducto): Observable<ClProducto> {
-    return this.http.put<ClProducto>(apiUrl + "/" + idProducto, producto, httpOptions)
+    return this.http.put<ClProducto>(apiUrl + idProducto, producto, httpOptions)
       .pipe(
-        tap(_ => console.log('updated product idProducto=${idProducto}')),
+        tap(_ => console.log('updated product id=${idProducto}')),
         catchError(this.handleError<any>('updateProduct'))
       );
   }

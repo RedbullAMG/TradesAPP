@@ -18,7 +18,7 @@ export class ClProducto {
     precio: number
     cantidad: number
     fechaNacimiento: Date
-    rut: null
+    rut: number
     dv: string
     enfermedad: string
     fonocontacto: number
