@@ -7,6 +7,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 
 import { ClProducto } from '../model/ClProducto';
 import { ProductServiceService } from '../product-service.service';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'app-product-edit',
@@ -38,8 +39,8 @@ export class ProductEditPage implements OnInit {
     this.getProduct(this.route.snapshot.params['id']);
     // Especificamos Validaciones por medio de FormGroup
     this.productForm = this.formBuilder.group({
-      'prod_categoria': [null, Validators.required],
-      'prod_nombreprod': [null, Validators.required],
+      'prod_categoria': [null, [Validators.required, noNumbersValidator2]],
+      'prod_nombreprod': [null, [Validators.required, noNumbersValidator2]],
       'prod_fCreacion': [null, Validators.required],
       
     });
@@ -118,6 +119,48 @@ export class ProductEditPage implements OnInit {
       ]
     });
     await alert.present();
+  }
+
+  async guardar(){
+    var formul = this.productForm.value;
+
+    if(this.productForm.invalid){
+      
+      const alert = await this.alertController.create({
+        header: 'Aviso!',
+        subHeader: 'Presta Atención',
+        message: 'Tienes que llenar todos los campos e ingresar datos correctos',
+        buttons: ['Aceptar'],
+      });
+
+      await alert.present();
+      return;
+      
+    }else{
+
+      const alert = await this.alertController.create({
+        
+        message: 'Registrado!'
+        
+      });
+      await alert.present();
+    }
+
+ 
+
+}
+
+}
+
+
+function noNumbersValidator2(control: AbstractControl): { [key: string]: boolean } | null {
+  const username = control.value;
+  const hasNumbers = /\d/.test(username); 
+
+  if (hasNumbers) {
+    return { containsNumbers: true }; 
+  } else {
+    return null; 
   }
 
 }

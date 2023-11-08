@@ -3,6 +3,7 @@ import { FormControl, FormGroupDirective, FormBuilder, FormGroup, NgForm, Valida
 import { LoadingController, AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClProducto } from '../model/ClProducto';
+import { AbstractControl } from '@angular/forms';
 
 import { ProductServiceService } from '../product-service.service';
 
@@ -46,6 +47,7 @@ export class ProductAddPage implements OnInit {
     private loadingController: LoadingController,
     private restApi: ProductServiceService,
     private router: Router,
+    public alertController: AlertController
   ) { }
 
   // Antes que inicie en pantalla
@@ -54,8 +56,8 @@ export class ProductAddPage implements OnInit {
   ngOnInit() {
     // Especificamos que todos los campos son obligatorios
     this.productForm = this.formBuilder.group({
-      "prod_categoria": [null, Validators.required],
-      'prod_nombreprod': [null, Validators.required],
+      "prod_categoria": [null, [Validators.required, noNumbersValidator2]],
+      'prod_nombreprod': [null, [Validators.required, noNumbersValidator2]],
       'prod_fCreacion': [null, Validators.required],
     });
   }
@@ -91,6 +93,47 @@ export class ProductAddPage implements OnInit {
         }
       });
     console.log("Observe que todo lo del suscribe sale después de este mensaje")
+  }
+
+  async guardar(){
+    var formul = this.productForm.value;
+
+    if(this.productForm.invalid){
+      
+      const alert = await this.alertController.create({
+        header: 'Aviso!',
+        subHeader: 'Presta Atención',
+        message: 'Tienes que llenar todos los campos e ingresar datos correctos',
+        buttons: ['Aceptar'],
+      });
+
+      await alert.present();
+      return;
+      
+    }else{
+
+      const alert = await this.alertController.create({
+        
+        message: 'Registrado!'
+        
+      });
+      await alert.present();
+    }
+
+ 
+
+}
+
+}
+
+function noNumbersValidator2(control: AbstractControl): { [key: string]: boolean } | null {
+  const username = control.value;
+  const hasNumbers = /\d/.test(username); 
+
+  if (hasNumbers) {
+    return { containsNumbers: true }; 
+  } else {
+    return null; 
   }
 
 }

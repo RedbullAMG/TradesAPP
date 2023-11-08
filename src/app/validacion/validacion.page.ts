@@ -6,6 +6,7 @@ import { AlertController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { GoogleMap } from '@capacitor/google-maps';
 
+
 const apiKey = 'AIzaSyDHUz9dZ3jFmn-goarRvUGNT6cTcLxlYEY';
 
 
