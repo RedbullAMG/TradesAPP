@@ -53,18 +53,16 @@
 
   <ion-card>
     <h6> Tu Ubicacion</h6>
-    <ion-fab-button #geolocation (click)="getCurrentPosition()" class="camera-button">
+    <ion-fab-button #geolocation (click)="obtenerPosicionActual()" class="camera-button">
       <ion-icon name="location"> </ion-icon> <!-- Agrega el icono de geolocalización aquí -->
     </ion-fab-button>
     
 </ion-card>
 
-  <ion-card>
-    <div id="map"></div>
-  </ion-card>
+  
 
   <div>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.25422030772!2d-74.14483101230368!3d40.69763074461104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNueva%20York%2C%20EE.%20UU.!5e0!3m2!1ses-419!2scl!4v1699402618917!5m2!1ses-419!2scl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <capacitor-google-map id="map"></capacitor-google-map>
   </div>
 
 

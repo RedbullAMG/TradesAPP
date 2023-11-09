@@ -7,6 +7,7 @@ import { Geolocation } from '@capacitor/geolocation';
 import { GoogleMap } from '@capacitor/google-maps';
 
 
+
 const apiKey = 'AIzaSyDHUz9dZ3jFmn-goarRvUGNT6cTcLxlYEY';
 
 
@@ -48,11 +49,15 @@ export class ValidacionPage {
       
     }
 
-    async getCurrentPosition() {
-      const coordinates = await Geolocation.getCurrentPosition();
-      console.log('Current', coordinates);
-      // Asignar el valor de la geolocalización al elemento HTML
-      this.geolocationElement.nativeElement.innerHTML = `Tu posición actual es: ${coordinates.coords.latitude}, ${coordinates.coords.longitude}`;
+    async obtenerPosicionActual() {
+      try {
+        const coordinates = await Geolocation.getCurrentPosition();
+        console.log('Current position:', coordinates);
+        // Haz algo con las coordenadas obtenidas, como mostrarlas en el componente
+      } catch (error) {
+        // Manejo de errores
+        console.error('Error getting current position:', error);
+      }
     }
       
     

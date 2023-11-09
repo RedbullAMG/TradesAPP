@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ValidacionPageRoutingModule } from './validacion-routing.module';
 
 import { ValidacionPage } from './validacion.page';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ValidacionPage } from './validacion.page';
     IonicModule,
     ValidacionPageRoutingModule
   ],
-  declarations: [ValidacionPage]
+  declarations: [ValidacionPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ValidacionPageModule {}

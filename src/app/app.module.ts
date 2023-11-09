@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { defineCustomElements } from '@ionic/pwa-elements/loader';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 // Call the element loader before the bootstrapModule/bootstrapApplication call
 defineCustomElements(window);
@@ -29,6 +30,7 @@ defineCustomElements(window);
       registrationStrategy: 'registerWhenStable:30000'
     })
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
