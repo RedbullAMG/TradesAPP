@@ -5,7 +5,7 @@ import { PhotoService } from '../services/photo.service';
 import { AlertController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { GoogleMap } from '@capacitor/google-maps';
-
+import { Router } from '@angular/router';
 
 
 const apiKey = 'AIzaSyDHUz9dZ3jFmn-goarRvUGNT6cTcLxlYEY';
@@ -17,18 +17,49 @@ const apiKey = 'AIzaSyDHUz9dZ3jFmn-goarRvUGNT6cTcLxlYEY';
   styleUrls: ['./validacion.page.scss'],
 })
 export class ValidacionPage {
-  
-
   photoData: SafeResourceUrl | undefined;
+  imgValidacionSrc: string | undefined;
+  usuario: any = {};
   @ViewChild('geolocation') geolocationElement: ElementRef;
   map: GoogleMap | undefined;
-  constructor(private sanitizer: DomSanitizer, public alertController: AlertController, public photoService: PhotoService) { }
-
+  constructor(
+    private sanitizer: DomSanitizer,
+    public alertController: AlertController,
+    public photoService: PhotoService,
+    private router: Router
+  ) {}
 
 
   async takePhoto() {
     this.photoService.addNewToGallery();
   }
+  
+  async addPhotoToGallery() {
+    await this.photoService.addNewToGallery();
+    if (this.photoService.photos.length > 0) {
+      this.imgValidacionSrc = this.photoService.photos[0].webviewPath;
+      this.usuario.img_perfil = this.imgValidacionSrc!;
+    }
+  }
+
+  async mostrarMensajeEnviado() {
+    const alert = await this.alertController.create({
+      header: 'Enviado',
+      message: 'Tu mensaje ha sido enviado, en 48 hrs se validará tu identidad.',
+      buttons: [
+       
+        {
+          text: 'Inicia sesion',
+          handler: () => {
+            this.router.navigate(['/login']);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
+
 
   sendEmail() {
     
@@ -36,7 +67,7 @@ export class ValidacionPage {
 
   async enviarImagen(){
     
-      
+  
       const alert = await this.alertController.create({
         header: 'ENVIADO!',
         
