@@ -62,6 +62,7 @@ export class ValidacionPage {
       
     
     async initializeMap() {
+      const coordinates = await Geolocation.getCurrentPosition();
       const mapRef = document.getElementById('map');
       if (mapRef) { // Comprueba si mapRef no es nulo
         const newMap = await GoogleMap.create({
@@ -70,10 +71,10 @@ export class ValidacionPage {
           apiKey: apiKey,
           config: {
             center: {
-              lat: 33.6,
-              lng: -117.9,
+              lat: coordinates.coords.latitude,
+              lng: coordinates.coords.longitude,
             },
-            zoom: 8,
+            zoom: 18,
           },
         });
         this.map = newMap;
