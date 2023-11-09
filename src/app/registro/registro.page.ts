@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import {
   FormGroup,
   FormControl,
@@ -16,7 +17,7 @@ export class RegistroPage implements OnInit {
 
   formularioRegistro: FormGroup;
 
-  constructor(public fb: FormBuilder, public alertController: AlertController,
+  constructor(public fb: FormBuilder, private router: Router, public alertController: AlertController,
     public navCtrl: NavController) { 
     this.formularioRegistro = this.fb.group({
 
@@ -52,12 +53,19 @@ export class RegistroPage implements OnInit {
       return;
       
     }else{
-
       const alert = await this.alertController.create({
-        
-        message: 'Registrado!'
-        
+        message: 'Registrado!',
+        buttons: [
+          {
+            text: 'validar Cuenta',
+            handler: () => {
+              this.router.navigate(['/validacion']);
+              
+            }
+          }
+        ]
       });
+    
       await alert.present();
     }
 
