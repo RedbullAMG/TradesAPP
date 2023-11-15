@@ -49,9 +49,9 @@ export class ValidacionPage {
       buttons: [
        
         {
-          text: 'Inicia sesion',
+          text: 'Ir al home',
           handler: () => {
-            this.router.navigate(['/login']);
+            this.router.navigate(['/home']);
           },
         },
       ],
