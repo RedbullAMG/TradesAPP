@@ -17,7 +17,7 @@ export class ClienteEditPage implements OnInit {
   // FormGroup para validaciones
   clientForm!: FormGroup;
   // Esquema a utilizar en el Html
-  cliente: Clcliente = { id: 1, first_name: '', last_name: '', email: '', clave: ''};
+  cliente: Clcliente = { id: 0, first_name: '', last_name: '', email: '', clave: ''};
   id: any = '';
   //prod_name: string = '';
   //prod_desc: string = '';

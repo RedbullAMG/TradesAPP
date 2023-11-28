@@ -5,7 +5,7 @@ import { ClienteEditPage } from './cliente-edit.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'cliente-edit/:id',
     component: ClienteEditPage
   }
 ];

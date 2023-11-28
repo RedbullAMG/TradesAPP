@@ -18,7 +18,7 @@ export class ProductEditPage implements OnInit {
   // FormGroup para validaciones
   productForm!: FormGroup;
   // Esquema a utilizar en el Html
-  producto: ClProducto = { idProducto: 0, codigo: '09-G09', nombreprod: '0', precio: 0,cantidad:0, fechaNacimiento: new Date(), rut: 0, dv: '0', enfermedad: '0', fonocontacto: 0, categoria: '0', editorial: '0', raza:'0', edad: 0, altura: 0, hrini: '0', hrfin: '0', direccion: '0', fCreacion: new Date() };
+  producto: ClProducto = { idProducto: 1, codigo: '09-G09', nombreprod: '0', precio: 0,cantidad:0, fechaNacimiento: new Date(), rut: 0, dv: '0', enfermedad: '0', fonocontacto: 0, categoria: '0', editorial: '0', raza:'0', edad: 0, altura: 0, hrini: '0', hrfin: '0', direccion: '0', fCreacion: new Date() };
   idProducto: any = '';
   //prod_name: string = '';
   //prod_desc: string = '';
@@ -36,7 +36,7 @@ export class ProductEditPage implements OnInit {
   ngOnInit() {
     console.log("ngOnInit ID:" + this.route.snapshot.params['idProducto']);
     // Relizamos lectura
-    this.getProduct(this.route.snapshot.params['id']);
+    this.getProduct(this.route.snapshot.params['idProducto']);
     // Especificamos Validaciones por medio de FormGroup
     this.productForm = this.formBuilder.group({
       'prod_categoria': [null, [Validators.required, noNumbersValidator2]],
