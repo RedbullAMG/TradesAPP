@@ -3,6 +3,7 @@ import { ProductDetailPage } from './product-detail.page';
 import { HttpClientModule } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
+import { RouterTestingModule} from '@angular/router/testing';
 
 describe('ProductDetailPage', () => {
   let component: ProductDetailPage;
@@ -11,15 +12,7 @@ describe('ProductDetailPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ProductDetailPage],
-      imports: [HttpClientModule],
-      providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            paramMap: of({ get: (key: string) => 'yourMockedParamValue' }),
-          },
-        },
-      ],
+      imports: [HttpClientModule, RouterTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProductDetailPage);

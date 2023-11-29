@@ -32,11 +32,11 @@ export class ProductEditPage implements OnInit {
     public route: ActivatedRoute,
     public router: Router,
     private formBuilder: FormBuilder) { }
-
-  ngOnInit() {
+  
+  ionViewDidEnter(){
     console.log("ngOnInit ID:" + this.route.snapshot.params['idProducto']);
     // Relizamos lectura
-    this.getProduct(this.route.snapshot.params['idProducto']);
+    this.getProduct(+this.route.snapshot.params['idProducto']);
     // Especificamos Validaciones por medio de FormGroup
     this.productForm = this.formBuilder.group({
       'prod_categoria': [null, [Validators.required, noNumbersValidator2]],
@@ -44,6 +44,10 @@ export class ProductEditPage implements OnInit {
       'prod_fCreacion': [null, Validators.required],
       
     });
+  }
+
+  ngOnInit() {
+    
   }
   async onFormSubmit(form: NgForm) {
     console.log("onFormSubmit ID:" + this.idProducto)
@@ -88,7 +92,6 @@ export class ProductEditPage implements OnInit {
             this.productForm.setValue({
               prod_categoria: data.categoria,
               prod_nombreprod: data.nombreprod,
-              prod_fCreacion: data.fCreacion,
              
             });
             loading.dismiss();

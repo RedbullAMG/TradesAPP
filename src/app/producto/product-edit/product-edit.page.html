@@ -22,10 +22,7 @@
       <ion-label position="floating">Nombre de Servicio</ion-label>
       <ion-input type="text" [(ngModel)]="producto.nombreprod" formControlName="prod_nombreprod"></ion-input>
     </ion-item>
-    <ion-item>
-      <ion-label position="floating">Fecha de Creacion</ion-label>
-      <ion-input type="Date" [(ngModel)]="producto.fCreacion" formControlName="prod_fCreacion"></ion-input>
-    </ion-item>
-    <ion-button type="submit" shape="round" color="primary" expand="block" [disabled]="!productForm.valid">Submit</ion-button>
+
+    <ion-button type="submit" shape="round" color="primary" expand="block" >Submit</ion-button>
   </form>
 </ion-content>

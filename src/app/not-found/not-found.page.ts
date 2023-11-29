@@ -8,8 +8,8 @@ import { AnimationController, IonCard } from '@ionic/angular';
   templateUrl: './not-found.page.html',
   styleUrls: ['./not-found.page.scss'],
 })
-export class NotFoundPage implements OnInit, AfterViewInit {
-  @ViewChild(IonCard, { read: ElementRef }) card: ElementRef<HTMLIonCardElement>;
+export class NotFoundPage{
+ /*  @ViewChild(IonCard, { read: ElementRef }) card: ElementRef<HTMLIonCardElement>;
   private animation: Animation;
 
   constructor(private animationCtrl: AnimationController) {}
@@ -55,5 +55,5 @@ export class NotFoundPage implements OnInit, AfterViewInit {
 
   stop() {
     this.animation.stop();
-  }
+  } */
 }

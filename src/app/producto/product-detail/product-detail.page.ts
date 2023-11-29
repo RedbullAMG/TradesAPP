@@ -52,12 +52,12 @@ export class ProductDetailPage implements OnInit {
 
 // Método que permite leer el producto
   async getProduct() {
-    console.log("getProduct **************** ParamMap ID:" + this.route.snapshot.paramMap.get('id'));
+    console.log("getProduct **************** ParamMap ID:" + this.route.snapshot.params['idProducto']);
     // Creamos un Wait
     const loading = await this.loadingController.create({ message: 'Loading...' });
     // Mostramos el Wait
     await loading.present();
-    await this.restApi.getProduct(+this.route.snapshot.paramMap.get('id')!)
+    await this.restApi.getProduct(+this.route.snapshot.params['idProducto'])
       .subscribe({
         next: (res) => {
           console.log("Data *****************");
